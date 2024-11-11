@@ -16,6 +16,6 @@ public class JmsController {
 
     @PostMapping("/send") //? maps HTTP POST request to this method
     public void sendMessage(@RequestBody String message){ //? accepts a message in the request body
-        messagePublisher.sendMessage(message);
+        messagePublisher.sendMessage(message); //? calls the MessagePublisher to send the provided message to the configured queue
     }
 }

@@ -23,15 +23,15 @@ public class JmsConfig {
     @Bean //? creates a JmsTemplate bean for sending messages
     public JmsTemplate jmsTemplate() {
         JmsTemplate template = new JmsTemplate(connectionFactory());
-        template.setPubSubDomain(true); //? sets the JmsTemplate to use topics instead of queues
+        template.setPubSubDomain(false); //? sets the JmsTemplate to use queues instead of topics
         return template;
     }
 
-    @Bean //? configures the listener container factory for topics
+    @Bean //? configures the listener container factory for queues
     public DefaultJmsListenerContainerFactory jmsListenerContainerFactory() {
         DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
         factory.setConnectionFactory(connectionFactory()); //? configures the connection factory
-        factory.setPubSubDomain(true); //? enables the use of topics
+        factory.setPubSubDomain(false); //? disables the use of topics to work with queues
         return factory;
     }
 }

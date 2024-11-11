@@ -7,14 +7,14 @@ import org.springframework.stereotype.Service;
 @Service //? marks this class as a service component, making it available for dependency injection
 public class MessagePublisher {
 
-    private static final String DESTINATION_TOPIC = "simple.topic"; //? name of the topic
+    private static final String DESTINATION_QUEUE = "simple.queue"; //? name of the queue
 
     @Autowired //? injects the JmsTemplate
     private JmsTemplate jmsTemplate;
 
-    //? sends a message to the topic
+    //? sends a message to the queue
     public void sendMessage(String message) {
-        jmsTemplate.convertAndSend(DESTINATION_TOPIC, message); //? sends the message to the topic
+        jmsTemplate.convertAndSend(DESTINATION_QUEUE, message); //? sends the message to the que
     }
 
 }
